@@ -81,17 +81,17 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 
 ```diff
 ├── data
-+└── data170962
-+    ├── train
-+    │   ├──images
-+    │   │   └── images
-+    │   └──masks
-+    │       └── images
-+    └── test
-+        ├──images
-+        │   └── images
-+        └──masks
-+            └── images
+ └── data170962
+     ├── train
+     │   ├──images
+     │   │   └── images
+     │   └──masks
+     │       └── images
+     └── test
+         ├──images
+         │   └── images
+         └──masks
+             └── images
 
 ```
 
