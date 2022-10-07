@@ -1,0 +1,1 @@
+from simplecv1.module.gap import GlobalAvgPool2D
