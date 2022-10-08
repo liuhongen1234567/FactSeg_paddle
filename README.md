@@ -259,7 +259,7 @@ python torch2paddleFactSeg.py
 python torch2paddleResnet50.py
 ```
 
-这里除了生成对齐数据代码块外，其他脚本中的输入路径、输出路径都要根据本地情况进行具体修改，同时也都无法在AI studio上运行,pytorch下的权重转换和npy生成文件位于torch_ref目录下，这里如果想要运行转换脚本和npy生成脚本，请下载到具有pytorch和paddle的虚拟环境下，同时根据pytorch下预训练模型权重转换脚本及npy文件生成代码使用说明.pdf文档和github上百度网盘链接搭建相应的目录结构。百度网盘密码为st5l。
+这里除了生成对齐数据代码块外，其他脚本中的输入路径、输出路径都要根据本地情况进行具体修改，同时也都无法在AI studio上运行,pytorch下的权重转换和npy生成文件位于torch_ref目录下，这里如果想要运行转换脚本和npy生成脚本，请下载到具有pytorch和paddle的虚拟环境下，同时根据`pytorch下预训练模型权重转换脚本及npy文件生成代码使用说明.pdf文档`和github上百度网盘链接搭建相应的目录结构。百度网盘密码为`st5l`。
 
 ## 8. LICENSE
 
