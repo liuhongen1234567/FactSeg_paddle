@@ -161,7 +161,7 @@ FactSeg权重文件和ResNet50预训练权重，请在[百度网盘](https://pan
 FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 
 将工作目录切换到`Fact-Seg-master/PaddleRS`。然后安装依赖，拷贝[4.2]小节下载的权重，导出部署模型。
-这里如果在本地部署还需要更改`/PaddleRS/paddlers/rs_models/seg/backbone/_resnet.py`下的预训练权重路径
+这里如果在本地部署还需要更改`/PaddleRS/paddlers/rs_models/seg/backbone/_resnet.py`第202-206行中的预训练权重路径
 ```jupyter
 %cd /home/aistudio/PaddleRS
 !pip install -r requirements.txt
