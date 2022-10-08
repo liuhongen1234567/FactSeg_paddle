@@ -1,0 +1,2 @@
+[2022-10-08 14:29:02] [INFO] : use AMP to train. AMP level = O1 
+[2022-10-08 14:30:56] [INFO] : [TRAIN] epoch: 1, iter: 50/60000, loss: 2.1254, lr: 0.006995, batch_cost: 2.2705, reader_cost: 0.38199, ips: 3.5235 samples/sec | ETA 37:48:34 
