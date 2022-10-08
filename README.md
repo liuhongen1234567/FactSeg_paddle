@@ -16,7 +16,7 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 **参考repo：** [Wang: FactSeg](https://github.com/Junjue-Wang/FactSeg)
 
 在此非常感谢 [Wang](https://github.com/Junjue-Wang/FactSeg) 等人贡献的FactSeg项目，提高了本repo复现论文的效率。项目已上传到[AI studio](https://aistudio.baidu.com/aistudio/projectdetail/4632057?sUid=711344&shared=1&ts=1665137667176)上，
-可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。AI studio上请fork v_2_3 最新版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。具体内容可以参考后台任务部署说明文档.pdf。
+可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。AI studio上请fork v_3_4 最新版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。具体内容可以参考后台任务部署说明文档.pdf。
 
 
 # 2. 数据集和复现精度
