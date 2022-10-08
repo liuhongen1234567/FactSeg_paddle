@@ -16,10 +16,10 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 **参考repo：** [Wang: FactSeg](https://github.com/Junjue-Wang/FactSeg)
 
 在此非常感谢 [Wang](https://github.com/Junjue-Wang/FactSeg) 等人贡献的FactSeg项目，提高了本repo复现论文的效率。项目已上传到[AI studio](https://aistudio.baidu.com/aistudio/projectdetail/4632057?sUid=711344&shared=1&ts=1665137667176)上，
-可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。
+可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。由于合并入PaddleRS之后，文件过大，AI studio上请fork草稿版本,发布的版本V_1到V_10是部署后台训练任务的历史版本，不作为参考。若部署后台任务，请先全选全部项目，在删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。fork草稿之外的版本就会导致文件无法运行。
 
 
-## 2. 数据集和复现精度
+# 2. 数据集和复现精度
 
 - 航空图像数据集iSAID—语义分割部分：[https://captain-whu.github.io/iSAID/index.html](https://captain-whu.github.io/iSAID/index.html)
 
@@ -198,7 +198,7 @@ FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 !bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
 ```
 
-TIPC测试日志文件保存于 [PaddleRS/test_tipc/output/seg/FactSeg/lite_train_lite_infer/results_python.log]() 。
+TIPC测试日志文件保存于[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)中 。
 
 
 ```jupyter
