@@ -36,7 +36,7 @@ class ResNetEncoder(CVModule.CVModule):
                 self.config.output_stride != 8]):
             raise ValueError('output_stride must be 8, 16 or 32.')
 
-        self.resnet = resnet50(pretrained=False,norm_layer=self.config.norm_layer)
+        self.resnet = resnet50(pretrained=self.config.pretrained,norm_layer=self.config.norm_layer)
         # self.resnet = resnet50(pretrained=False, norm_layer=self.config.norm_layer)
         # self.resnet = resnet50(pretrained=False)
         # self.resnet._children
