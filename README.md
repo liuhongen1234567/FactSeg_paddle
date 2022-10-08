@@ -151,7 +151,7 @@ mask_dir='/home/aistudio/data/data170962/test/masks/images'
 ```
 
 
-FactSeg权重文件和ResNet50预训练权重，请在[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)下载，密码为`st5l`或直接在AI studio中下载。10k之前的模型采用训练评估一体化部署，后因内存溢出，训练从10k模型恢复训练，10k之后开始保存每5000k的周期模型，因此这里不提供5k模型，10k模型路径为/home/aistudio/data/data170962/fact-seg_temp.pdparams，15k模型路径为/home/aistudio/data/data170962/fact-seg_temp_15k.pdparams，其他模型均在/home/aistudio/data/data171451/val_model文件夹下，测试时，请更换文件名。如果需要运行模型对齐的代码块3-6，请从上述[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)链接下载Step1_5.zip文件，并解压到根目录FactSeg_paddle-main下。
+FactSeg权重文件和ResNet50预训练权重，请在[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)下载，密码为`st5l`或直接在AI studio中下载。10k之前的模型采用训练评估一体化部署，后因内存溢出，训练从10k模型恢复训练，10k之后开始保存每5000k的周期模型，因此这里不提供5k模型，10k模型路径为/home/aistudio/data/data170962/fact-seg_temp.pdparams，15k模型路径为/home/aistudio/data/data170962/fact-seg_temp_15k.pdparams，其他模型均在/home/aistudio/data/data171451/val_model文件夹下，测试时，请更换文件名。如果需要运行模型、损失、评估、反向的对齐的代码块，即代码块3-6，请从上述[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)链接下载Step1_5.zip文件，并解压到根目录FactSeg_paddle-main下。
 
 
 ## 5. 模型推理部署
