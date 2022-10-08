@@ -16,7 +16,7 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 **参考repo：** [Wang: FactSeg](https://github.com/Junjue-Wang/FactSeg)
 
 在此非常感谢 [Wang](https://github.com/Junjue-Wang/FactSeg) 等人贡献的FactSeg项目，提高了本repo复现论文的效率。项目已上传到[AI studio](https://aistudio.baidu.com/aistudio/projectdetail/4632057?sUid=711344&shared=1&ts=1665137667176)上，
-可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。请forkV_2_1版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。
+可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。请fork v_2_2 最新版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。具体内容可以参考后台任务部署说明文档.pdf。
 
 
 # 2. 数据集和复现精度
@@ -191,8 +191,7 @@ FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 !bash ./test_tipc/prepare.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
 ```
 
-这里由于AI Studio上无法安装遥感图像读取库gdal，请在本地运行PaddleRS中sh文件进行测试，整个测试约耗时5min左右，该项目
-没有在多卡上测试，仅在本地单卡12G上测试成功。
+由于AI stuido上无法安装gdal库，请下载PaddleRS.zip到本地进行测试，整个测试约耗时5min左右，本地测试结果已经保存到/home/aistudio/PaddleRS/test_tipc/output/seg/FactSeg/lite_train_lite_infer/results_python.log中。请下载/home/aistudio/data/data170962/resnet50_paddle.pdparams下的Resnet50预训练模型，并再次确保/home/aistudio/PaddleRS/paddlers/rs_models/seg/backbone/_resnet.py第202-206行的resnet50模型路径正确；如果不正确，请更改，并再次运行python setup.py install对更改进行保存。该项目没有在多卡上测试，仅在本地单卡12G上测试成功。
 
 ```jupyter
 !bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
