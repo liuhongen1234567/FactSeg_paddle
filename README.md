@@ -134,7 +134,7 @@ resume_model_path=''
 
 ### 4.2 模型评估
 
-训练时未进行评估，待训练完成后单独对已保存模型进行评估，并写入日志，选择验证集最优模型。
+训练时未进行评估，待训练完成后单独对已保存模型进行评估，并写入日志，选择验证集最优模型。根据测试结果10k之后模型的测试指标不再提升，因此选择10k-60k保存的模型均可达到验收指标
 
 ```jupyter
 config_path='isaid.factseg'
@@ -150,7 +150,6 @@ mask_dir='/home/aistudio/data/data170962/test/masks/images'
     --patch_size=896
 ```
 
-以下内容中，单独对本repo训练好的最优权重进行评估。
 
 FactSeg权重文件和ResNet50预训练权重，请在[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)下载，密码为`st5l`或直接在AI studio中下载。由于项目前10k是训练评估一体化的，所以5k模型没有提供，10k模型保存在/home/aistudio/data/data170962/fact-seg_temp.pdparams。15k模型保存在/home/aistudio/data/data170962/fact-seg_temp_15k.pdparams，若进行9.周期性测试时，10k和15k测试请更换为以上路径。
 
