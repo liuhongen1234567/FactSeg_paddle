@@ -232,11 +232,40 @@ GDAL import fails with ImportError: libpoppler.so.71: cannot open shared object 
 ```py
 conda install "poppler<0.62"
 ```
-## 7. LICENSE
+## 7. pytorch下的权重转换脚本（Resnet50、FactSeg50）及各种npy文件生成脚本使用说明
+生成对齐数据请运行如下命令：
+```py
+%cd /home/aistudio/
+!python 00_test_data_generate.py
+```
+生成其他ref.npy文件,请在pytorch和paddle环境下运行以下命令：
+```py
+cd XX/lhe/Fact-Seg 
+# 模型结构对齐
+python 01_test_forward_torch.py
+# 评估对齐
+python 03_test_metric_torch.py
+# 损失对齐
+python 04_loss_torch.py
+# 反向对齐
+python 05_test_backward_torch.py
+```
+对Resnet50、FactSeg50进行权重转换，请在pytorch环境和paddle下运行以下命令
+```py
+cd XX/lhe/Fact-Seg 
+# 对FactSeg50进行权重转换
+python torch2paddleFactSeg.py
+# 对Resnet50进行权重转换
+python torch2paddleResnet50.py
+```
+
+这里除了生成对齐数据代码块外，其他脚本中的输入路径、输出路径都要根据本地情况进行具体修改，同时也都无法在AI studio上运行,pytorch下的权重转换和npy生成文件位于/home/aistudio/torch_ref下，这里如果想要运行转换脚本和npy生成脚本，请下载到具有pytorch和paddle的虚拟环境下，同时根据pytorch下预训练模型权重转换脚本及npy文件生成代码使用说明.pdf文档和github上百度网盘链接搭建相应的目录结构。百度网盘密码为st5l。
+
+## 8. LICENSE
 
 本项目的发布受 [Apache 2.0 license](https://github.com/ucsk/FarSeg/blob/develop/LICENSE) 许可认证。
 
-## 8. 参考链接与文献
+## 9. 参考链接与文献
 
 - 论文： <a href="https://ieeexplore.ieee.org/abstract/document/9497514" target="_blank">FactSeg: Foreground Activation-Driven Small Object Semantic Segmentation in Large-Scale Remote Sensing Imagery</a>
 - 代码： <a href="https://github.com/Junjue-Wang/FactSeg" target="_blank">FactSeg (Junjue-Wang
