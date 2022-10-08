@@ -192,7 +192,7 @@ FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 ```
 
 这里由于AI Studio上无法安装遥感图像读取库gdal，请在本地运行PaddleRS中sh文件进行测试，整个测试约耗时5min左右，该项目
-没有在多卡上测试，尽在本地单卡12G上测试成功。
+没有在多卡上测试，仅在本地单卡12G上测试成功。
 
 ```jupyter
 !bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
