@@ -106,7 +106,7 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 主要训练配置如下：
 
 -   模型训练步长60000，单卡训练批大小设为8；
--   优化器：Momentum（momentum=0.9, weight_decay=1e-4, [clip_grad_by_norm]() ）；
+-   优化器：Momentum（momentum=0.9, weight_decay=1e-4, clip_grad_by_norm ）；
 -   学习率策略：多项式衰减PolynomialDecay（begin=0.007，end=0.0, power=0.9）；
 
 下载转换得到的ResNet50预训练权重，保存在`/home/aistudio/data/data170962/resnet50_paddle.pdparams`或者手动更改/home/aistudio/simplecv1/module/_resnet.py
