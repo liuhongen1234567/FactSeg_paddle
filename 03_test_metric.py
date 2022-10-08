@@ -38,8 +38,7 @@ def test_forward():
 
 
     cls = paddle.to_tensor(np.load(data_root + '/cls.npy'))
-    fg_cls =paddle.to_tensor(np.load(data_root + '/fg_cls_label.npy'))
-    y ={'cls':cls, 'fg_cls_label':fg_cls}
+    y ={'cls':cls}
   
     paddle_out, loss_paddle= paddle_model(fake_img,y)
     paddle_out = paddle_out.argmax(axis=1)

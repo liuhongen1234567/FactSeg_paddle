@@ -27,6 +27,7 @@ def test_forward():
 
     # prepare logger & load data
     reprod_logger = ReprodLogger()
+#     data_root ='/home/aistudio/Step1_5/0_test_data'
     data_root = '/home/aistudio/Step1_5/data'
     fake_img =paddle.to_tensor(np.load(data_root + '/img.npy'))
 #     tmp = fake_img
@@ -36,8 +37,7 @@ def test_forward():
 
 
     cls = paddle.to_tensor(np.load(data_root + '/cls.npy'))
-    fg_cls =paddle.to_tensor(np.load(data_root + '/fg_cls_label.npy'))
-    y ={'cls':cls, 'fg_cls_label':fg_cls}
+    y ={'cls':cls}
   
     _, loss_paddle= paddle_model(fake_img,y)
 

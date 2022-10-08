@@ -68,8 +68,7 @@ def test_backward():
     # fake_img = F.normalize(fake_img, mean=(123.675, 116.28, 103.53), std=(58.395, 57.12, 57.375))
     # fake_img = fake_img.unsqueeze(0)
     cls = paddle.to_tensor(np.load(data_root + '/cls.npy'))
-    fg_cls =paddle.to_tensor(np.load(data_root + '/fg_cls_label.npy'))
-    y ={'cls':cls, 'fg_cls_label':fg_cls}
+    y ={'cls':cls}
 
 
     for idx in range(max_iter):
