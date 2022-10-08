@@ -198,7 +198,7 @@ FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 !bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
 ```
 
-TIPC测试日志文件保存于[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)中 。
+TIPC测试日志文件保存于之前的[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)中，密码为st5l 。
 
 
 ```jupyter
