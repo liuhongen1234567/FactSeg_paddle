@@ -27,14 +27,10 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 
 | method         | iters | bs   | card | loss      | align_corners | mIoU    |
 |----------------| ----- | ---- | ---- |-----------| ------------- |---------|
-| official_code  | 60k   | 4    | 2    | JointLoss | √             | 64.79   | 
-| ours_60k       | 60k   | 8    | 1    | JointLoss | √             | 64.79   | 
-| official_paper | 20k   | 4    | 1?   | JointLoss | √             | 64.79   | 
-| ours_10k       | 10k   | 8    | 1    | JointLoss | √             | 64.79   | 
+| official_code  | 60k   | 4    | 2    | JointLoss | √             | 64.80   | 
+| ours           | 60k   | 8    | 1    | JointLoss | √             | 64.64   | 
 
-关于模型验证指标，尽管官方代码的训练次数为60k，但是根据对每5000迭代保存的模型进行测试，发现模型在训练10k时，就已经达到64.79的指标了，与论文提到的训练20k迭代一致，由于论文没有提到GPU数量，猜测可能为单GPU，
-如果想要快速验证，可训练10k以上迭代次数后，测试第10k时保存的模型即可，模型进行10k次迭代大约需要8-10小时左右。模型迭代60k大约需要2天左右。训练和测试日志保存
-在Log文件夹下。
+关于模型验证指标，模型迭代60k大约需要2天左右。训练日志保存在Log文件夹下。
 
 
 ## 3. 准备数据与环境
