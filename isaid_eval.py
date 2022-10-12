@@ -120,8 +120,10 @@ def run():
     if opts is not None:
         cfg.update_from_list(opts)
     paddle_model = FactSeg(cfg['model']['params'])
+    print("loading path {}".format(args.ckpt_path))
 
-    paddle_state_dict = paddle.load("/home/aistudio/data/data170962/factseg50_paddle.pdparams")
+    paddle_state_dict = paddle.load(args.ckpt_path)
+    
     paddle_model.set_dict(paddle_state_dict)
     paddle_model.eval()
 
