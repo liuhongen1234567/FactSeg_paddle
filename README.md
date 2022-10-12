@@ -183,20 +183,20 @@ FactSeg模型迁移在这里 [PaddleRS/paddlers/rs_models/seg]。
 
 ```jupyter
 !pip install  https://paddleocr.bj.bcebos.com/libs/auto_log-1.2.0-py3-none-any.whl
-!bash ./test_tipc/prepare.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
+!bash ./test_tipc/prepare.sh test_tipc/configs/seg/factseg/train_infer_python.txt lite_train_lite_infer
 ```
 
 由于AI stuido上无法安装gdal库，请下载PaddleRS.zip到本地进行测试，整个测试约耗时5min左右，本地测试结果已经保存到/home/aistudio/PaddleRS/test_tipc/output/seg/FactSeg/lite_train_lite_infer/results_python.log中。请下载/home/aistudio/data/data170962/resnet50_paddle.pdparams下的Resnet50预训练模型，并再次确保/home/aistudio/PaddleRS/paddlers/rs_models/seg/backbone/_resnet.py第202-206行的resnet50模型路径正确；如果不正确，请更改，并再次运行python setup.py install对更改进行保存。该项目没有在多卡上测试，仅在本地单卡12G上测试成功。
 
 ```jupyter
-!bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
+
 ```
 
 TIPC测试日志文件保存于之前的[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)链接中，密码为st5l 。日志文件在百度网盘的路径为FactSeg/TIPC日志文件/results_python.log
 
 
 ```jupyter
-!bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/farseg/train_infer_python.txt lite_train_lite_infer
+!bash ./test_tipc/test_train_inference_python.sh test_tipc/configs/seg/factseg/train_infer_python.txt lite_train_lite_infer
 ```
 ### Ubuntu 系统安装gdal
 ```jupyter
