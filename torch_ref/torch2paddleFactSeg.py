@@ -27,7 +27,7 @@ def torch2paddle():
             print(k)
         else:
             paddle_state_dict[k] = v
-    torch.save(paddle_state_dict, paddle_path)
+    paddle.save(paddle_state_dict, paddle_path)
 
 
 if __name__ == "__main__":

@@ -4,15 +4,13 @@ import paddle
 import numpy as np
 from data1.isaid import COLOR_MAP
 from data1.isaid import ImageFolderDataset
-from concurrent.futures import ProcessPoolExecutor
 from paddle.io import DataLoader
 from simplecv1.api.preprocess import comm
 from simplecv1.api.preprocess import segm
-from tqdm import tqdm
 from simplecv1.data.preprocess import sliding_window
 from simplecv1.process.function import  th_divisible_pad
-from module.factseg import  FactSeg
-from paddle.vision.transforms import functional as F
+from simplecv1.metric.miou import NPMeanIntersectionOverUnion as NPmIoU
+from model_rs_verify.factseg import  FactSeg
 
 
 parser = argparse.ArgumentParser()
@@ -32,7 +30,7 @@ parser.add_argument('--patch_size', default=896, type=int,
                     help='patch size')
 parser.add_argument('--tta', action='store_true', default=False, help='use tta')
 
-logger = logging.getLogger('SW-Infer_eval')
+logger = logging.getLogger('SW-Infer')
 logger.setLevel(logging.INFO)
 
 
@@ -93,9 +91,8 @@ class SegmSlidingWinInference(object):
                 with paddle.no_grad():
                         if image.shape[1]!=3:
                                 print("ERROR")
-                        # print(image.shape)
                         out = model(image)
-                        # out = paddle.zeros([1,16,image.shape[2],image.shape[3]])
+                        out = out[0]
                 if size_divisor is not None:
                         out = out[:, :, :h, :w]
                 out_list.append((out.cpu(), win))
@@ -107,19 +104,10 @@ class SegmSlidingWinInference(object):
 
 
 
-from simplecv1.metric.miou import NPMeanIntersectionOverUnion as NPmIoU
 def run():
     args = parser.parse_args()
-    # load paddle model
-    from simplecv1.core.config import AttrDict
-    from simplecv1.util.config import import_config
-    config_path = 'isaid.factseg'
-    cfg = import_config(config_path)
-    cfg = AttrDict.from_dict(cfg)
-    opts = None
-    if opts is not None:
-        cfg.update_from_list(opts)
-    paddle_model = FactSeg(cfg['model']['params'])
+
+    paddle_model = FactSeg(in_channels=3,num_classes=16,backbone='resnet50',backbone_pretrained=False)
     print("loading path {}".format(args.ckpt_path))
 
     paddle_state_dict = paddle.load(args.ckpt_path)
@@ -128,8 +116,6 @@ def run():
     paddle_model.eval()
 
     dataset = ImageFolderDataset(image_dir=args.image_dir, mask_dir=args.mask_dir)
-
-    palette = np.asarray(list(COLOR_MAP.values())).reshape((-1,)).tolist()
 
     miou_op = NPmIoU(num_classes=16, logdir=None)
 
@@ -147,7 +133,8 @@ def run():
 
         h, w = image.shape[:2]
         if idx%10==0:
-                logging.info('Progress - [{} / {}] size = ({}, {})'.format(idx + 1, len(dataset), h, w))
+                print('Progress - [{} / {}] size = ({}, {})'.format(idx + 1, len(dataset), h, w))
+                
         seg_helper = segm_helper.patch((h, w), patch_size=(args.patch_size, args.patch_size), stride=512,
                                        transforms=image_trans)
         out = seg_helper.forward(paddle_model, image, size_divisor=32)

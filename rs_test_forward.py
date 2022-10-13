@@ -1,24 +1,15 @@
 import paddle
 from reprod_log import ReprodDiffHelper
 from reprod_log import ReprodLogger
-from factseg import  FactSeg
+from model_rs_verify.factseg import FactSeg
 import numpy as np
 from paddle.vision.transforms import functional as F
 def test_forward():
 
-    # load paddle model
-    from simplecv1.core.config import AttrDict
-    from simplecv1.util.config import import_config
-    config_path = 'isaid.factseg'
-    cfg = import_config(config_path)
-    cfg = AttrDict.from_dict(cfg)
-    opts = None
-    if opts is not None:
-        cfg.update_from_list(opts)
 
-    paddle_model = FactSeg(cfg['model']['params'])
+    paddle_model =  FactSeg(in_channels=3,num_classes=16,backbone='resnet50',backbone_pretrained=False)
     paddle_model.eval()
-    paddle_state_dict = paddle.load("/home/aistudio/data/data170962/factseg50_paddle.pdparams")
+    paddle_state_dict = paddle.load("/home/aistudio/data/data171451/factseg50_paddle_RS.pdparams")
     paddle_model.set_dict(paddle_state_dict)
 
     # load data
@@ -30,9 +21,9 @@ def test_forward():
 
     # save the paddle output
     reprod_logger = ReprodLogger()
-    paddle_out = paddle_model(fake_img)
-    reprod_logger.add("output", paddle_out.cpu().detach().numpy())
-    reprod_logger.save("./Step1_5/result/forward_paddle.npy")
+    paddle_out_rs = paddle_model(fake_img)
+    reprod_logger.add("output", paddle_out_rs[0].cpu().detach().numpy())   
+    reprod_logger.save("/home/aistudio/Step1_5/result/forward_rs_paddle.npy")
 
 
 if __name__ == "__main__":
@@ -41,10 +32,10 @@ if __name__ == "__main__":
     
 #     load data
     diff_helper = ReprodDiffHelper()
-    torch_info = diff_helper.load_info("./Step1_5/result/forward_ref.npy")
-    paddle_info = diff_helper.load_info("./Step1_5/result/forward_paddle.npy")
+    paddle_rs_info = diff_helper.load_info("/home/aistudio/Step1_5/result/forward_rs_paddle.npy")
+    paddle_info = diff_helper.load_info("/home/aistudio/Step1_5/result/forward_paddle.npy")
 
     # compare result and produce log
-    diff_helper.compare_info(torch_info, paddle_info)
+    diff_helper.compare_info(paddle_rs_info, paddle_info)
     diff_helper.report(
         path="./Step1_5/result/log/forward_diff.log")
