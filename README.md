@@ -255,11 +255,35 @@ python torch2paddleResnet50.py
 
 这里除了生成对齐数据代码块外，其他脚本中的输入路径、输出路径都要根据本地情况进行具体修改，同时也都无法在AI studio上运行,pytorch下的权重转换和npy生成文件位于torch_ref目录下，这里如果想要运行转换脚本和npy生成脚本，请下载到具有pytorch和paddle的虚拟环境下，同时根据`pytorch下预训练模型权重转换脚本及npy文件生成代码使用说明.pdf文档`和github上[百度网盘](https://pan.baidu.com/s/1wI7OjqIkrBvo6gv55GSKyg)链接搭建相应的目录结构。百度网盘密码为`st5l`。
 
-## 8. LICENSE
+## 8. 迁移到PaddleRS模型与AI Studio实现模型一致性验证
+
+模型一致性验证前，请确保下载并解压Step1_5文件夹和转化后的PaddleRS迁移模型factseg50_paddle_RS.pdparams，该模型仍位于上述百度网盘链接中。
+模型结构对齐验证，请运行如下命令：
+```py
+%cd /home/aistudio/
+!python rs_test_forward.py
+```
+torch转paddle模型在测试集上的精度验证，请运行如下命令：
+```py
+%cd /home/aistudio/
+config_path='isaid.factseg'
+ckpt_path='/home/aistudio/data/data171451/factseg50_paddle_RS.pdparams'
+image_dir='/home/aistudio/data/data170962/test/images/images'
+mask_dir='/home/aistudio/data/data170962/test/masks/images'
+
+!python isaid_eval_rs.py \
+    --config_path={config_path} \
+    --ckpt_path={ckpt_path} \
+    --image_dir={image_dir} \
+    --mask_dir={mask_dir} \
+    --patch_size=896
+```
+
+## 9. LICENSE
 
 本项目的发布受 [Apache 2.0 license](https://github.com/ucsk/FarSeg/blob/develop/LICENSE) 许可认证。
 
-## 9. 参考链接与文献
+## 10. 参考链接与文献
 
 - 论文： <a href="https://ieeexplore.ieee.org/abstract/document/9497514" target="_blank">FactSeg: Foreground Activation-Driven Small Object Semantic Segmentation in Large-Scale Remote Sensing Imagery</a>
 - 代码： <a href="https://github.com/Junjue-Wang/FactSeg" target="_blank">FactSeg (Junjue-Wang
