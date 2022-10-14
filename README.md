@@ -16,7 +16,7 @@ Remote Sensing Imagery](https://ieeexplore.ieee.org/document/9497514)
 **参考repo：** [Wang: FactSeg](https://github.com/Junjue-Wang/FactSeg)
 
 在此非常感谢 [Wang](https://github.com/Junjue-Wang/FactSeg) 等人贡献的FactSeg项目，提高了本repo复现论文的效率。项目已上传到[AI studio](https://aistudio.baidu.com/aistudio/projectdetail/4632057?sUid=711344&shared=1&ts=1665137667176)上，
-可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。AI studio上请fork v_4_1 最新版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。具体内容可以参考后台任务部署说明文档.pdf。
+可使用32G显存部署后台任务训练。若在本地训练，请对数据集路径，预训练权重路径的文件进行相应更改。AI studio上请fork v_4_2 最新版本。若部署后台任务，请先全选全部项目，再删除Step1_5文件夹, final.zip文件，RaddleRS.zip, RaddleRS文件夹，并选择train.ipynb作为执行文件。其他版本将会导致文件无法运行。具体内容可以参考后台任务部署说明文档.pdf。
 
 
 # 2. 数据集和复现精度
@@ -258,6 +258,10 @@ python torch2paddleResnet50.py
 ## 8. 迁移到PaddleRS模型与AI Studio实现模型一致性验证
 
 模型一致性验证前，请确保下载并解压Step1_5文件夹和转化后的PaddleRS迁移模型factseg50_paddle_RS.pdparams，该模型仍位于上述百度网盘链接中。
+torch到迁移模型权重的转换,请将torch2paddleFactSeg_RS.py文件复制到FactSeg的torch版本根目录下，并运行如下命令：
+```py
+!python torch2paddleFactSeg_RS.py
+```
 模型结构对齐验证，请运行如下命令：
 ```py
 %cd /home/aistudio/
